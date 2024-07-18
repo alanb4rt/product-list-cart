@@ -1,17 +1,5 @@
 import data from "../data/data.json";
 
-// {
-//     "image": {
-//          "thumbnail": "./assets/images/image-waffle-thumbnail.jpg",
-//          "mobile": "./assets/images/image-waffle-mobile.jpg",
-//          "tablet": "./assets/images/image-waffle-tablet.jpg",
-//          "desktop": "./assets/images/image-waffle-desktop.jpg"
-//     },
-//     "name": "Waffle with Berries",
-//     "category": "Waffle",
-//     "price": 6.50
-//  },
-
 export function Item({ item }) {
   const { image, name, category, price } = item;
   const { thumbnail, mobile, tablet, desktop } = image;
