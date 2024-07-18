@@ -38,7 +38,7 @@ export function Item({ item }) {
         <div className="card-description">
           <p className="">{category}</p>
           <p className="font-bold">{name}</p>
-          <p className="">{price}</p>
+          <p className="text-rose-700 font-semibold">${price}</p>
         </div>
       </div>
     </>
@@ -48,10 +48,13 @@ export function Item({ item }) {
 export default function ListItem() {
   return (
     <>
-      <div className="list">
-        {data.map((item, index) => (
-          <Item key={index} item={item} />
-        ))}
+      <div>
+        <h1>Desserts</h1>
+        <div className="list">
+          {data.map((item, index) => (
+            <Item key={index} item={item} />
+          ))}
+        </div>
       </div>
     </>
   );
