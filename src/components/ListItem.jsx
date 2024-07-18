@@ -1,12 +1,20 @@
+import { useContext } from "react";
 import data from "../data/data.json";
 import { formatPrice } from "../utils/formatPrice";
+import { CartContext } from "../App";
 
 export function Item({ item }) {
+  const { cartItems, setCartItems } = useContext(CartContext);
+
   const { image, name, category, price } = item;
   const { thumbnail, mobile, tablet, desktop } = image;
 
-  const cleanImageUrl = (image) => {
-    return image.replace("./", "./src/");
+  const cleanImageUrl = (image) => image.replace("./", "./src/");
+
+  const addToCart = () => {
+    const newId = cartItems.length + 1;
+    const newItem = { id: newId, ...item };
+    setCartItems([...cartItems, newItem]);
   };
   return (
     <>
@@ -20,7 +28,7 @@ export function Item({ item }) {
             alt={`Image ${name}`}
           />
         </picture>
-        <div className="card-button">
+        <div className="card-button" onClick={addToCart}>
           <img src="./src/assets/images/icon-add-to-cart.svg" alt="Icon cart" />
           <button>Add to Cart</button>
         </div>
