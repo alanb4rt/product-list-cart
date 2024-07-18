@@ -1,7 +1,12 @@
+import ListItem from "./components/ListItem";
+
 export default function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <main className="container mx-auto px-4 py-16">
+        <h1 className="text-3xl font-bold mb-8">Desserts</h1>
+        <ListItem />
+      </main>
     </>
   );
 }
