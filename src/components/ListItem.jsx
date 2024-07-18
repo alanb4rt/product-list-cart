@@ -1,4 +1,5 @@
 import data from "../data/data.json";
+import { formatPrice } from "../utils/formatPrice";
 
 export function Item({ item }) {
   const { image, name, category, price } = item;
@@ -26,7 +27,7 @@ export function Item({ item }) {
         <div className="card-description">
           <p className="">{category}</p>
           <p className="font-bold">{name}</p>
-          <p className="text-rose-700 font-semibold">${price}</p>
+          <p className="text-rose-700 font-semibold">${formatPrice(price)}</p>
         </div>
       </div>
     </>

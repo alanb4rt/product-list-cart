@@ -1,6 +1,7 @@
 import data from "../data/data.json";
 import iconRemoveItem from "../assets/images/icon-remove-item.svg";
 import iconCarbonNeutral from "../assets/images/icon-carbon-neutral.svg";
+import { formatPrice } from "../utils/formatPrice";
 
 export function CartItem({ item }) {
   const { image, name, category, price } = item;
@@ -11,8 +12,10 @@ export function CartItem({ item }) {
           <p className="font-bold mb-2">{name}</p>
           <div className="flex gap-2 text-primary">
             <p className="font-bold mr-2">2x</p>
-            <p className="text-rose-400">@ ${price}</p>
-            <p className="text-rose-400 font-semibold">${price * 2}</p>
+            <p className="text-rose-400">@ ${formatPrice(price)}</p>
+            <p className="text-rose-400 font-semibold">
+              ${formatPrice(price * 2)}
+            </p>
           </div>
         </div>
         <div>
