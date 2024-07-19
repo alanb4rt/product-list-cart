@@ -2,20 +2,21 @@ import { useContext } from "react";
 import iconRemoveItem from "../assets/images/icon-remove-item.svg";
 import iconCarbonNeutral from "../assets/images/icon-carbon-neutral.svg";
 import { formatPrice } from "../utils/formatPrice";
+import { removeItemToCart } from "../utils/removeItemToCart";
 import { CartContext } from "../App";
 
 export function CartItem({ item, onClick }) {
-  const { image, name, category, price } = item;
+  const { image, name, category, price, count = 1 } = item;
   return (
     <>
       <li className="flex justify-between items-center py-4 border-b">
         <div className="flex flex-col">
           <p className="font-bold mb-2">{name}</p>
           <div className="flex gap-2 text-primary">
-            <p className="font-bold mr-2">2x</p>
+            <p className="font-bold mr-2">{count}x</p>
             <p className="text-rose-400">@ ${formatPrice(price)}</p>
             <p className="text-rose-400 font-semibold">
-              ${formatPrice(price * 2)}
+              ${formatPrice(price * count)}
             </p>
           </div>
         </div>
@@ -36,10 +37,14 @@ export function CartItem({ item, onClick }) {
 export default function OrderCart() {
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const removeItemToCart = (id) => {
-    const removeItem = cartItems.filter((item) => item.id !== id);
-    setCartItems(removeItem);
+  const handleItem = (name) => {
+    removeItemToCart(name, cartItems, setCartItems);
   };
+
+  const finalePrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.count,
+    0
+  );
   return (
     <>
       <ul>
@@ -47,13 +52,13 @@ export default function OrderCart() {
           <CartItem
             key={index}
             item={item}
-            onClick={() => removeItemToCart(item.id)}
+            onClick={() => handleItem(item.name)}
           />
         ))}
       </ul>
       <div className="flex justify-between items-center gap-4 py-8">
         <p>Order Total</p>
-        <p className="text-4xl font-bold">$32.00</p>
+        <p className="text-4xl font-bold">${formatPrice(finalePrice)}</p>
       </div>
       <div className="flex justify-center items-center gap-2 bg-rose-50 p-4 rounded mb-8">
         <img src={iconCarbonNeutral} alt="Icon Carbon Neutral" />
@@ -61,7 +66,7 @@ export default function OrderCart() {
           This is <b>carbon-neutral</b> delivery
         </p>
       </div>
-      <button className="bg-primary text-white rounded-full w-full p-4">
+      <button className="cursor-pointer bg-primary text-white rounded-full w-full p-4">
         Confirm Order
       </button>
     </>

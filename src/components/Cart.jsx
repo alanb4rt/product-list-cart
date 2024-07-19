@@ -6,7 +6,7 @@ import OrderCart from "./OrderCart";
 export default function Cart() {
   const { cartItems } = useContext(CartContext);
 
-  const itemCount = cartItems.length;
+  const itemCount = cartItems.reduce((acc, item) => acc + item.count, 0);
   return (
     <>
       <div className="bg-white p-8 h-fit rounded-lg">

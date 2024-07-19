@@ -29,6 +29,10 @@ h2 {
   @apply text-2xl font-bold mb-2;
 }
 
+button {
+  @apply cursor-default
+}
+
 
 .list {
   @apply grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3;
@@ -38,8 +42,25 @@ h2 {
   @apply flex flex-col;
 }
 
+.card-active .card-image {
+  @apply outline outline-offset-0 outline-2 outline-primary;
+}
+
+.card-button,
+.card-button-active {
+  @apply flex items-center gap-2 w-9/12 mx-auto px-4 py-2 -mt-5 mb-4 rounded-full text-sm outline outline-offset-0 outline-1 outline-primary;
+}
+
 .card-button {
-  @apply cursor-pointer flex justify-center items-center gap-2 w-9/12 bg-white p-2 mx-auto -mt-5 mb-4 rounded-full border border-primary font-semibold;
+  @apply cursor-pointer justify-center bg-white font-semibold;
+}
+
+.card-button-active {
+  @apply justify-between bg-primary text-white;
+}
+
+.card-button-active img {
+  @apply cursor-pointer border border-white rounded-full p-1 size-4;
 }
 
 .card-description {

@@ -2,6 +2,8 @@ import { useContext } from "react";
 import data from "../data/data.json";
 import { formatPrice } from "../utils/formatPrice";
 import { CartContext } from "../App";
+import ButtonAdd from "./ButtonAdd";
+import ButtonAddActive from "./ButtonAddActive";
 
 export function Item({ item }) {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -11,27 +13,56 @@ export function Item({ item }) {
 
   const cleanImageUrl = (image) => image.replace("./", "./src/");
 
-  const addToCart = () => {
-    const newId = cartItems.length + 1;
-    const newItem = { id: newId, ...item };
-    setCartItems([...cartItems, newItem]);
+  const addOneItemToCart = () => {
+    const findItem = cartItems.find((item) => item.name === name);
+    if (findItem) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.name === name ? { ...item, count: item.count + 1 } : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { count: 1, ...item }]);
+    }
   };
+
+  const removeOneItemToCart = () => {
+    const findItem = cartItems.find((item) => item.name === name);
+    if (findItem.count > 1) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.name === name ? { ...item, count: item.count - 1 } : item
+        )
+      );
+    } else {
+      setCartItems(cartItems.filter((item) => item.name !== name));
+    }
+  };
+
+  const checkItemInCart = () => cartItems.some((item) => item.name === name);
   return (
     <>
-      <div className="card">
+      <div className={`card ${checkItemInCart() && "card-active"}`}>
         <picture>
           <source media="(width < 640px)" srcSet={cleanImageUrl(mobile)} />
           <source media="(width < 768px)" srcSet={cleanImageUrl(tablet)} />
           <img
-            className="rounded-2xl"
+            className="card-image rounded-2xl"
             src={cleanImageUrl(desktop)}
             alt={`Image ${name}`}
           />
         </picture>
-        <div className="card-button" onClick={addToCart}>
-          <img src="./src/assets/images/icon-add-to-cart.svg" alt="Icon cart" />
-          <button>Add to Cart</button>
-        </div>
+        {checkItemInCart() ? (
+          <ButtonAddActive
+            item={item}
+            addOneItemToCart={addOneItemToCart}
+            removeOneItemToCart={removeOneItemToCart}
+            cartItems={cartItems}
+          />
+        ) : (
+          <ButtonAdd addOneItemToCart={addOneItemToCart} />
+        )}
+
         <div className="card-description">
           <p className="">{category}</p>
           <p className="font-bold">{name}</p>
