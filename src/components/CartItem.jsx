@@ -32,7 +32,7 @@ export default function CartItem({ item, onClick, confirmOrder }) {
         <div>
           {!confirmOrder ? (
             <img
-              className="cursor-pointer flex"
+              className="cursor-pointer border border-rose-300 rounded-full p-1"
               src={iconRemoveItem}
               alt="Delete"
               title="Delete"
