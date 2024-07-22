@@ -1,0 +1,1 @@
+export const changeImageURL = (image) => image.replace("./", "./src/");
