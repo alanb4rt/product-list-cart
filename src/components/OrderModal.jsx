@@ -21,7 +21,11 @@ export default function OrderModal() {
             <h2 className="text-4xl">Order Confirmed</h2>
             <p>We hope you enjoy your food!</p>
             <div className="bg-rose-50 p-4 my-8">
-              <ul>
+              <ul
+                className={`max-h-48 ${
+                  cartItems.length > 2 ? "overflow-y-scroll pr-2" : ""
+                }`}
+              >
                 {cartItems.map((item, index) => (
                   <CartItem
                     key={index}
