@@ -20,7 +20,7 @@ export default function App() {
             <Cart />
           </div>
         </main>
-        <OrderModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
+        <OrderModal />
       </CartContext.Provider>
     </>
   );

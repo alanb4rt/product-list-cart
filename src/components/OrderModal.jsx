@@ -1,11 +1,12 @@
-import { useContext } from "react";
-import { CartContext } from "../App";
 import TotalPrice from "./TotalPrice";
 import CartItem from "./CartItem";
 import iconOrderConfirmed from "../assets/images/icon-order-confirmed.svg";
+import { useContext } from "react";
+import { CartContext } from "../App";
 
-export default function OrderModal({ isOpenModal, setIsOpenModal }) {
-  const { cartItems, setCartItems } = useContext(CartContext);
+export default function OrderModal() {
+  const { cartItems, setCartItems, isOpenModal, setIsOpenModal } =
+    useContext(CartContext);
 
   const handleButton = () => {
     setCartItems([]);
