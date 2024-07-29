@@ -1,5 +1,5 @@
-import IconDecrement from "../assets/images/icon-decrement-quantity.svg";
-import IconIncrement from "../assets/images/icon-increment-quantity.svg";
+import IconDecrement from "./icons/IconDecrement";
+import IconIncrement from "./icons/IconIncrement";
 
 export default function ButtonAddActive({
   item,
@@ -13,13 +13,9 @@ export default function ButtonAddActive({
   return (
     <>
       <button className="card-button-active">
-        <img
-          src={IconDecrement}
-          alt="Icon less"
-          onClick={removeOneItemToCart}
-        />
+        <IconDecrement onClick={removeOneItemToCart} />
         {itemCount()}
-        <img src={IconIncrement} alt="Icon plus" onClick={addOneItemToCart} />
+        <IconIncrement onClick={addOneItemToCart} />
       </button>
     </>
   );

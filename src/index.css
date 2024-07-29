@@ -34,7 +34,11 @@ button {
 }
 
 .btn-primary {
-  @apply cursor-pointer bg-primary text-white rounded-full w-full p-4;
+  @apply cursor-pointer bg-primary text-white rounded-full w-full p-4 hover:bg-[#952c0c];
+}
+
+.btn-remove svg {
+  @apply text-rose-300 cursor-pointer min-w-5 min-h-5 aspect-square border border-current rounded-full p-1 hover:text-black;
 }
 
 
@@ -52,19 +56,19 @@ button {
 
 .card-button,
 .card-button-active {
-  @apply flex items-center gap-2 w-9/12 mx-auto px-4 py-2 -mt-5 mb-4 rounded-full text-sm outline outline-offset-0 outline-1 outline-primary;
+  @apply flex items-center gap-2 w-2/3 mx-auto px-4 py-2 -mt-5 mb-4 rounded-full text-sm outline outline-offset-0 outline-1;
 }
 
 .card-button {
-  @apply cursor-pointer justify-center bg-white font-semibold;
+  @apply cursor-pointer justify-center bg-white font-semibold outline-rose-300 hover:text-primary hover:outline-primary;
 }
 
 .card-button-active {
-  @apply justify-between bg-primary text-white;
+  @apply outline-primary justify-between bg-primary text-white;
 }
 
-.card-button-active img {
-  @apply cursor-pointer border border-white rounded-full p-1 size-4;
+.btn-quantity svg {
+  @apply text-white cursor-pointer border border-white rounded-full p-1 size-4 hover:text-primary hover:bg-white;
 }
 
 .card-description {

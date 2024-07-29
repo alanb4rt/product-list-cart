@@ -1,6 +1,6 @@
-import iconRemoveItem from "../assets/images/icon-remove-item.svg";
 import { changeImageURL } from "../utils/changeImageURL";
 import { formatPrice } from "../utils/formatPrice";
+import IconRemoveItem from "./icons/IconRemoveItem";
 
 export default function CartItem({ item, onClick, confirmOrder }) {
   const { image, name, price, count = 1 } = item;
@@ -31,13 +31,7 @@ export default function CartItem({ item, onClick, confirmOrder }) {
         </div>
         <div>
           {!confirmOrder ? (
-            <img
-              className="cursor-pointer min-w-5 min-h-5 aspect-square border border-rose-300 rounded-full p-1"
-              src={iconRemoveItem}
-              alt="Delete"
-              title="Delete"
-              onClick={onClick}
-            />
+            <IconRemoveItem onClick={onClick} />
           ) : (
             <p className="font-semibold">${formatPrice(price * count)}</p>
           )}
