@@ -23,7 +23,9 @@ export default function OrderModal() {
             <div className="bg-rose-50 p-4 my-8">
               <ul
                 className={`max-h-48 ${
-                  cartItems.length > 2 ? "overflow-y-scroll pr-2" : ""
+                  cartItems.length > 2
+                    ? "w-[calc(100%+1rem)] overflow-y-scroll pr-2"
+                    : ""
                 }`}
               >
                 {cartItems.map((item, index) => (

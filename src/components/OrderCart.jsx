@@ -16,7 +16,9 @@ export default function OrderCart() {
     <>
       <ul
         className={`max-h-96 ${
-          cartItems.length > 4 ? "overflow-y-scroll pr-2" : ""
+          cartItems.length > 4
+            ? "w-[calc(100%+2rem)] overflow-y-scroll pr-2"
+            : ""
         }`}
       >
         {cartItems.map((item, index) => (

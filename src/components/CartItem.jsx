@@ -17,8 +17,8 @@ export default function CartItem({ item, onClick, confirmOrder }) {
             />
           )}
           <div className="flex flex-col">
-            <p className="font-bold mb-2">{name}</p>
-            <div className="flex gap-2 text-primary">
+            <p className="line-clamp-2 font-bold mb-2">{name}</p>
+            <div className="flex flex-wrap gap-2 text-primary">
               <p className="font-bold mr-2">{count}x</p>
               <p className="text-rose-400">@ ${formatPrice(price)}</p>
               {!confirmOrder && (
@@ -32,7 +32,7 @@ export default function CartItem({ item, onClick, confirmOrder }) {
         <div>
           {!confirmOrder ? (
             <img
-              className="cursor-pointer border border-rose-300 rounded-full p-1"
+              className="cursor-pointer min-w-5 min-h-5 aspect-square border border-rose-300 rounded-full p-1"
               src={iconRemoveItem}
               alt="Delete"
               title="Delete"
