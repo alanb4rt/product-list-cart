@@ -5,7 +5,7 @@ export default function ButtonAdd({ addOneItemToCart }) {
     <>
       <button className="card-button" onClick={addOneItemToCart}>
         <img src={IconAddToCart} alt="Icon cart" />
-        <p className="truncate">Add to Cart</p>
+        <span className="truncate">Add to Cart</span>
       </button>
     </>
   );
