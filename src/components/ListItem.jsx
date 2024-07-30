@@ -4,7 +4,7 @@ import { formatPrice } from "../utils/formatPrice";
 import { CartContext } from "../App";
 import ButtonAdd from "./ButtonAdd";
 import ButtonAddActive from "./ButtonAddActive";
-import { changeImageURL } from "../utils/changeImageURL";
+import { getImageURL } from "../utils/imageURL";
 
 export function Item({ item }) {
   const { cartItems, setCartItems } = useContext(CartContext);
@@ -41,13 +41,13 @@ export function Item({ item }) {
   const checkItemInCart = () => cartItems.some((item) => item.name === name);
   return (
     <>
-      <div className={`card ${checkItemInCart() && "card-active"}`}>
+      <div className={`card ${checkItemInCart() ? "card-active" : ""}`}>
         <picture>
-          <source media="(width < 640px)" srcSet={changeImageURL(mobile)} />
-          <source media="(width < 768px)" srcSet={changeImageURL(tablet)} />
+          <source media="(width < 640px)" srcSet={getImageURL(mobile)} />
+          <source media="(width < 768px)" srcSet={getImageURL(tablet)} />
           <img
             className="card-image rounded-2xl"
-            src={changeImageURL(desktop)}
+            src={getImageURL(desktop)}
             alt={`Image ${name}`}
           />
         </picture>

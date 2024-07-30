@@ -1,10 +1,11 @@
-import { changeImageURL } from "../utils/changeImageURL";
 import { formatPrice } from "../utils/formatPrice";
+import { getImageURL } from "../utils/imageURL";
 import IconRemoveItem from "./icons/IconRemoveItem";
 
 export default function CartItem({ item, onClick, confirmOrder }) {
   const { image, name, price, count = 1 } = item;
   const { thumbnail } = image;
+  const imageURL = getImageURL(thumbnail);
   return (
     <>
       <li className="flex items-center justify-between gap-4 py-4 border-b">
@@ -12,7 +13,7 @@ export default function CartItem({ item, onClick, confirmOrder }) {
           {confirmOrder && (
             <img
               className="size-12 object-cover"
-              src={changeImageURL(thumbnail)}
+              src={imageURL}
               alt={`Image of ${name}`}
             />
           )}
