@@ -76,9 +76,9 @@ button {
 }
 
 .modal {
-  @apply fixed inset-0 bg-black bg-opacity-50 grid place-content-center;
+  @apply fixed inset-0 bg-black bg-opacity-50 grid content-end justify-center sm:place-content-center;
 }
 
 .modal-content {
-  @apply w-full min-w-[50vw] bg-white p-8 rounded-lg;
+  @apply w-screen bg-white p-8 rounded-t-lg sm:rounded-lg sm:w-[36rem];
 }
