@@ -8,22 +8,22 @@ import CartItem from "./CartItem";
 export default function OrderCart() {
   const { cartItems, setCartItems, setIsOpenModal } = useContext(CartContext);
 
-  const handleItem = (name) => {
+  const handleItem = (name: string) => {
     removeItemToCart(name, cartItems, setCartItems);
   };
+
+  const hasManyItems = cartItems.length > 4
+    ? "w-[calc(100%+2rem)] overflow-y-scroll pr-2"
+    : ""
 
   return (
     <>
       <ul
-        className={`max-h-96 ${
-          cartItems.length > 4
-            ? "w-[calc(100%+2rem)] overflow-y-scroll pr-2"
-            : ""
-        }`}
+        className={`max-h-96 ${hasManyItems}`}
       >
-        {cartItems.map((item, index) => (
+        {cartItems.map((item) => (
           <CartItem
-            key={index}
+            key={item.name}
             item={item}
             onClick={() => handleItem(item.name)}
             confirmOrder={false}

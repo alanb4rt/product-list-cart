@@ -6,7 +6,7 @@ export default function TotalPrice() {
   const { cartItems } = useContext(CartContext);
 
   const calculateTotalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.count,
+    (acc, item) => acc + item.price * (item.count ?? 0),
     0
   );
   return (
