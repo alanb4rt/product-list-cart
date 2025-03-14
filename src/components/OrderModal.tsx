@@ -5,13 +5,17 @@ import { useContext } from "react";
 import { CartContext } from "../App";
 
 export default function OrderModal() {
-  const { cartItems, setCartItems, isOpenModal, setIsOpenModal } =
-    useContext(CartContext);
+  const { cartItems, setCartItems, isOpenModal, setIsOpenModal } = useContext(CartContext);
 
   const handleButton = () => {
     setCartItems([]);
     setIsOpenModal(false);
   };
+
+  const hasManyItems = cartItems.length > 2
+    ? "w-[calc(100%+1rem)] overflow-y-scroll pr-2"
+    : ""
+
   return (
     <>
       {isOpenModal && (
@@ -22,17 +26,12 @@ export default function OrderModal() {
             <p>We hope you enjoy your food!</p>
             <div className="bg-rose-50 p-4 my-8">
               <ul
-                className={`max-h-48 ${
-                  cartItems.length > 2
-                    ? "w-[calc(100%+1rem)] overflow-y-scroll pr-2"
-                    : ""
-                }`}
+                className={`max-h-48 ${hasManyItems}`}
               >
-                {cartItems.map((item, index) => (
+                {cartItems.map((item) => (
                   <CartItem
-                    key={index}
+                    key={item.name}
                     item={item}
-                    onClick={() => console.log("hello")}
                     confirmOrder={true}
                   />
                 ))}
